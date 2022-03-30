@@ -1,0 +1,69 @@
+﻿using System;
+
+namespace ConsoleApp34
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CustomList<int> list = new CustomList<int>();
+            list.Add(17);
+            list.Add(21);
+            list.Add(74);
+            list.Add(57);
+            list.Add(98);
+            list.Add(86);
+            list.reverse();
+        }
+    }
+    class CustomList<T>
+    { 
+        private  T[] _list;
+        public int say;
+
+        
+        public CustomList()
+        {
+            _list = new T[0];
+        }
+        public CustomList(params T[] nums)
+        {
+            _list = new T[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                _list[i] = nums[i];
+            }
+        }
+        public void Add(T input)
+        {
+            Array.Resize(ref _list, _list.Length + 1);
+            _list[_list.Length - 1] = input;
+        }
+        public void Show()
+        {
+            foreach(var item in _list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        
+        
+
+        public void reverse()
+        {
+            for (int i = _list.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(_list[i]);
+            }
+        }
+        
+        public void Count()
+        {
+            for (int i = 0; i < _list.Length; i++)
+            {
+                say++;                
+            }
+            Console.WriteLine(say);
+        }
+    }
+}
